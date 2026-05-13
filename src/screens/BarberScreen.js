@@ -68,7 +68,7 @@ export default function BarberScreen({ navigation }) {
       </View>
       
       {/* Мастера с фото */}
-      <Text style={styles.sectionTitle}>👨‍🎨 Наши мастера</Text>
+      <Text style={styles.sectionTitle}> Наши мастера</Text>
       {filteredBarbers.map(barber => {
         const levelColor = getLevelColor(barber.level);
         return (

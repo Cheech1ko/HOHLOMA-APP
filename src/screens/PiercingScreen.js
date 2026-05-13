@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   View,
   Text,
@@ -88,9 +89,9 @@ export default function PiercingScreen({ navigation }) {
                   
                   <View style={styles.infoContainer}>
                     <Text style={styles.masterName}>{master.name}</Text>
-                    <Text style={styles.masterDetail}>⭐ Стаж: {master.experience}</Text>
-                    {master.medical && <Text style={styles.masterDetail}>🏥 Медицинское образование</Text>}
-                    <Text style={styles.masterDetail}>💉 {master.specialty}</Text>
+                    <Text style={styles.masterDetail}> Стаж: {master.experience}</Text>
+                    {master.medical && <Text style={styles.masterDetail}> Медицинское образование</Text>}
+                    <Text style={styles.masterDetail}> {master.specialty}</Text>
                     
                     <View style={styles.priceContainer}>
                       <View style={styles.priceChip}>
@@ -149,7 +150,7 @@ export default function PiercingScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+container: {
     flex: 1,
     backgroundColor: Colors.background,
   },
@@ -224,8 +225,8 @@ const styles = StyleSheet.create({
   },
   avatar: {
     width: 64,
-    height: 64,
-    borderRadius: 32,
+    height: 80,
+    borderRadius: 20,
     backgroundColor: Colors.surfaceLight,
   },
   avatarPlaceholder: {
