@@ -10,7 +10,7 @@ import NewsScreen from '../screens/NewsScreen';
 import BookingScreen from '../screens/BookingScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
-// Импорт экранов услуг (открываются как отдельные страницы)
+// Импорт экранов услуг
 import BarberScreen from '../screens/BarberScreen';
 import TattooScreen from '../screens/TattooScreen';
 import PiercingScreen from '../screens/PiercingScreen';
@@ -19,7 +19,7 @@ import MassageScreen from '../screens/MassageScreen';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// Компонент таб-навигации (4 основных экрана)
+// Таб-навигатор
 function TabNavigator() {
   return (
     <Tab.Navigator
@@ -44,96 +44,40 @@ function TabNavigator() {
           borderTopColor: Colors.border,
           paddingBottom: 5,
           paddingTop: 5,
-          height: 60,
+          height: 75,
         },
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '500',
         },
-        headerStyle: {
-          backgroundColor: Colors.background,
-          borderBottomWidth: 1,
-          borderBottomColor: Colors.border,
-        },
-        headerTintColor: Colors.text,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+        headerShown: false,
       })}
     >
-      <Tab.Screen name="Главная" component={HomeScreen}
-      options={{ headerShown: false }} />
+      <Tab.Screen name="Главная" component={HomeScreen} />
       <Tab.Screen name="Новости" component={NewsScreen} />
-      <Tab.Screen name="Запись" component={BookingScreen} />
+      <Tab.Screen name="Запись" component={BookingScreen}
+      options = {{ headerShown: false, headerTitle: '' }}/>
       <Tab.Screen name="Профиль" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
 
-// Главный навигатор (Stack + Tab вместе)
+// Главный навигатор
 export default function AppNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false, // Скрываем заголовок Stack, так как у табов он уже есть
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
       }}
     >
-      {/* Таб-навигатор как главный экран */}
       <Stack.Screen name="MainTabs" component={TabNavigator} />
-      
-      {/* Экраны услуг (открываются поверх табов с кнопкой "Назад") */}
-      <Stack.Screen 
-        name="Барбершоп" 
-        component={BarberScreen}
-        options={{
-          headerShown: true,
-          title: 'Барбершоп',
-          headerStyle: {
-            backgroundColor: Colors.background,
-          },
-          headerTintColor: Colors.text,
-          headerBackTitle: 'Назад',
-        }}
-      />
-      <Stack.Screen 
-        name="Тату" 
-        component={TattooScreen}
-        options={{
-          headerShown: true,
-          title: 'Тату-студия',
-          headerStyle: {
-            backgroundColor: Colors.background,
-          },
-          headerTintColor: Colors.text,
-          headerBackTitle: 'Назад',
-        }}
-      />
-      <Stack.Screen 
-        name="Пирсинг" 
-        component={PiercingScreen}
-        options={{
-          headerShown: true,
-          title: 'Пирсинг',
-          headerStyle: {
-            backgroundColor: Colors.background,
-          },
-          headerTintColor: Colors.text,
-          headerBackTitle: 'Назад',
-        }}
-      />
-      <Stack.Screen 
-        name="Массаж" 
-        component={MassageScreen}
-        options={{
-          headerShown: true,
-          title: 'Массаж',
-          headerStyle: {
-            backgroundColor: Colors.background,
-          },
-          headerTintColor: Colors.text,
-          headerBackTitle: 'Назад',
-        }}
-      />
+      <Stack.Screen name="Барбершоп" component={BarberScreen} />
+      <Stack.Screen name="Тату" component={TattooScreen} />
+      <Stack.Screen name="Пирсинг" component={PiercingScreen} />
+      <Stack.Screen name="Массаж" component={MassageScreen} />
+      <Stack.Screen name="Запись" component={BookingScreen} />
     </Stack.Navigator>
   );
 }

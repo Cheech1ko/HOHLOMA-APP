@@ -1,4 +1,5 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   View,
   Text,
@@ -43,7 +44,7 @@ export default function TattooScreen({ navigation }) {
       </View>
       
       {/* Мастера */}
-      <Text style={styles.sectionTitle}>🎨 Мастера тату</Text>
+      <Text style={styles.sectionTitle}> Мастера тату</Text>
       {TATTOO_MASTERS.map((master) => (
         <TouchableOpacity
           key={master.id}
@@ -77,9 +78,9 @@ export default function TattooScreen({ navigation }) {
               {/* Информация */}
               <View style={styles.infoContainer}>
                 <Text style={styles.masterName}>{master.name}</Text>
-                <Text style={styles.masterDetail}>🎯 {master.style}</Text>
-                <Text style={styles.masterDetail}>⭐ Стаж: {master.experience}</Text>
-                <Text style={styles.masterDetail}>🏆 {master.specialty}</Text>
+                <Text style={styles.masterDetail}> {master.style}</Text>
+                <Text style={styles.masterDetail}> Стаж: {master.experience}</Text>
+                <Text style={styles.masterDetail}> {master.specialty}</Text>
                 
                 <View style={styles.priceContainer}>
                   <View style={styles.priceChip}>
